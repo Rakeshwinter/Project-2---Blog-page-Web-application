@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+    <section class="flex-form flex-box">
+        <% if(!locals.list){ %>
+        <form action="/submit" method="post" class="form">
+            <label for="topic">Topic</label>
+            <input type="text" id="topic" name="topic" placeholder="Your Topic..." maxlength="50" required>
+            <label for="Description"></label>
+            <textarea name="message" maxlength="800" id="Description" required></textarea>
+            <input type="submit" value="Submit" class="submit-btn">
+        </form>
+        <% }else{ %>
+            <form action="/recreate" method="post" class="form">
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" name="topic" value="<%= locals.list[0] %>" placeholder="Your Topic..." maxlength="50" required>
+                <label for="Description">Description</label>
+                <textarea name="message" maxlength="800" id="Description" required><%= locals.list[1] %></textarea>
+                <input type="hidden" name="value" value=<%= locals.list[2] %>>
+                <input type="submit" value="Edit" class="submit-btn">
+            </form>
+        <% } %>
+    </section>
+<%- include("partials/footer.ejs") %>

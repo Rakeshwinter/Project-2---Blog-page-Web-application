@@ -1,0 +1,33 @@
+
+<%- include("partials/header.ejs") %>
+
+<section class="container flex-box">
+    <div class="grid-container">
+        <% if(locals.data){ %>
+        <% for(let list of locals.data){%>
+        <div class="item">
+            <div class="position flex-box"> 
+                <h2 class="topic"><%= list[0] %></h2>
+                <div class="small-nav flex-box">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <div class="change flex-box">
+                        <a href="/edit?position=<%= list[0] %>">Edit</a>
+                        <a href="/delete?position=<%= list[0] %>">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <p class="para"><%= list[1] %></p>
+        </div>
+        <% } } %>
+
+        <div class="extra flex-box">
+            <div class="new flex-box">
+                <h1>Create New Blogs</h1>
+                <a class="plus flex-box" href="/create"></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include("partials/footer.ejs") %>
+
